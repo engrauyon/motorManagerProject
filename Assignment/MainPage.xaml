@@ -1,0 +1,136 @@
+﻿<Page
+    x:Class="Assignment.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Assignment"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    NavigationCacheMode="Required" >
+    <Page.Resources>
+        <Color x:Key="textBoxBackgroundColor">#66FFFFFF</Color>
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Trebuchet MS" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="Padding" Value="5,7,0,0" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="150" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+    </Page.Resources>
+
+    <SplitView x:Name="mainSplitView" DisplayMode="CompactInline"  IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="175" TabIndex="120" >
+        <SplitView.Pane>
+            <StackPanel Background="LightGoldenrodYellow">
+                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click" TabIndex="130"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="saveButton" FontFamily="Segoe MDL2 Assets" Content="&#xE105;" Width="50" Height="50" Background="Transparent" Click="saveButton_Click" TabIndex="140"/>
+                    <TextBlock Text="Save" FontSize="16" FontFamily="Trebuchet MS" FontWeight="Bold" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="resetButton" FontFamily="Segoe MDL2 Assets" Content="&#xE149;" Width="50" Height="50" Background="Transparent" Click="resetButton_Click" TabIndex="150"/>
+                    <TextBlock Text="Reset" FontSize="16" FontFamily="Trebuchet MS" FontWeight="Bold" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="calcButton" FontFamily="Segoe MDL2 Assets" Content="&#xE1D0;" Width="50" Height="50" Background="Transparent" Click="calcButton_Click" TabIndex="160" />
+                    <TextBlock Text="Calculate" FontSize="16" FontFamily="Trebuchet MS" FontWeight="Bold" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="dailySummaryButton" FontFamily="Segoe MDL2 Assets" Content="&#xE1A5;" Width="50" Height="50" Background="Transparent" Click="dailySummaryButton_Click" TabIndex="170" IsEnabled="False" />
+                    <TextBlock Text="Daily Summary" FontSize="16" FontFamily="Trebuchet MS" FontWeight="Bold" VerticalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+        </SplitView.Pane>
+
+        <SplitView.Content>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="230"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="117*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="172" />
+                    <ColumnDefinition Width="350" />
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF19200" Offset="0"/>
+                        <GradientStop Color="#FFF3B34B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+
+
+                <TextBlock x:Name="pageHeading" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Motor Manager" VerticalAlignment="Top" Height="40" Width="325" FontFamily="Copperplate Gothic Bold" FontSize="36" FontWeight="Bold" TextAlignment="Center" Foreground="White" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,0,0"/>
+
+                <StackPanel Grid.Row="1" Grid.Column="0" Margin="10">
+                    <TextBlock x:Name="customerNameTextBlock" Text="Customer Name"  Height="30" Width="150"  Margin="10" TextWrapping="Wrap" FontSize="16" FontFamily="Trebuchet MS" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,7,0,0" />
+                    <TextBlock x:Name="customerPhoneTextBlock" Text="Customer Phone" Height="30" Width="150" Margin="10"  TextWrapping="Wrap"  FontSize="16" FontFamily="Trebuchet MS" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,7,0,0" />
+                    <TextBlock x:Name="vehiclePriceTextBlock" Text="Vehicle Price" Height="30" Width="150" Margin="10,10,-8,10"  TextWrapping="Wrap"  FontSize="16" FontFamily="Trebuchet MS" FontWeight="Bold" HorizontalAlignment="Left" Padding="5,7,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="tradeInTextBlock" Text="Less: Trade In" Height="30" Width="150" Margin="10,10,-8,10" TextWrapping="Wrap"  FontSize="16" FontFamily="Trebuchet MS" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,7,0,0" />
+                </StackPanel>
+
+                <StackPanel Padding="0" Grid.Row="1" Grid.Column="1" Margin="10">
+                    <TextBox x:Name="customerNameTextBox" HorizontalAlignment="Left" Height="30" Width="250" Margin="10" TextWrapping="Wrap" Text="" VerticalAlignment="Top" BorderThickness="1" BorderBrush="#FFA94513" TabIndex="0" />
+                    <TextBox x:Name="customerPhoneTextBox" HorizontalAlignment="Left" Height="30" Width="250" Margin="10" TextWrapping="Wrap" Text="" VerticalAlignment="Top" BorderThickness="1" BorderBrush="#FFA94513" TabIndex="10"/>
+                    <TextBox x:Name="vehiclePriceTextBox" HorizontalAlignment="Left" Height="30" Width="250" Margin="10,10,0,10" TextWrapping="Wrap" Text="" VerticalAlignment="Top" BorderThickness="1" BorderBrush="#FFA94513" TabIndex="20" />
+                    <TextBox x:Name="tradeInTextBox" HorizontalAlignment="Left" Height="30" Width="250" Margin="10,10,0,10" TextWrapping="Wrap" Text="" VerticalAlignment="Top" BorderThickness="1" BorderBrush="#FFA94513" Foreground="Black" TabIndex="30"/>
+                </StackPanel>
+
+                <StackPanel Padding="10" Orientation="Horizontal" Margin="0,210,0,75" Grid.Row="1" Grid.RowSpan="2" />
+
+                <TextBlock x:Name="outputLabelTextBlock"  Height="35" Width="286" HorizontalAlignment="Left" Margin="10,175,0,0" TextWrapping="Wrap" Text="Check the Amounts Here:" VerticalAlignment="Top" FontFamily="Cambria" FontSize="18" FontWeight="Bold" FontStyle="Italic" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                <StackPanel Padding="0" Margin="10,10,10,43" Grid.Row="3" >
+                    <TextBlock x:Name="subAmountTextBlock"  Height="30" Width="150"  Margin="10" TextWrapping="Wrap" Text="Sub Amount" FontFamily="Trebuchet MS" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,7,0,0"/>
+                    <TextBlock x:Name="gstTextBlock"  Height="30" Width="150"  Margin="10" TextWrapping="Wrap" Text="GST Amount" FontFamily="Trebuchet MS" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,7,0,0"/>
+                    <TextBlock x:Name="totalAmountTextBlock"  Height="30" Width="150"  Margin="10" TextWrapping="Wrap" Text="Total Amount" FontFamily="Trebuchet MS" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,7,0,0"/>
+                </StackPanel>
+
+                <StackPanel Padding="0" Grid.Row="3" Grid.Column="1" Margin="10,10,54,43">
+                    <TextBox x:Name="subAmountTextBox" HorizontalAlignment="Left" Height="30" Width="250" Margin="10" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+                    <TextBox x:Name="gstAmountTextBox" HorizontalAlignment="Left" Height="30" Width="250" Margin="10" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+                    <TextBox x:Name="totalAmountTextBox" HorizontalAlignment="Left" Height="30" Width="250" Margin="10" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+                </StackPanel>
+
+
+
+
+                <StackPanel  Grid.Row="3" Grid.Column="3" Margin="0" Padding="10">
+                    <Image Source="/Images/car.jpg" Stretch="Fill" Width="375" Height="160" Margin="23,0,22,0"/>
+                    <TextBlock x:Name="creditTextBlock" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Developed By: Mofizul Islam" VerticalAlignment="Top" FontFamily="Palace Script MT" FontSize="48"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="2" Margin="10">
+                    <TextBlock x:Name="warrantyRadioTextBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Warranty:" VerticalAlignment="Top" FontFamily="Cambria" FontSize="18" FontWeight="Bold"/>
+                    <RadioButton x:Name="warranty1YearRadioButton" GroupName="warranty" Content="1 Year (No Charge)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True" Height="30" Width="200" TabIndex="40" />
+                    <RadioButton x:Name="warranty2YearRadioButton" GroupName="warranty" Content="2 Years (plus 5%)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"  Height="30" Width="200" TabIndex="50" />
+                    <RadioButton x:Name="warranty3YearRadioButton" GroupName="warranty" Content="3 Years (plus 10%)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="200" TabIndex="60" />
+                    <RadioButton x:Name="warranty5YearRadioButton" GroupName="warranty" Content="5 Years (plus 20%)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="200" TabIndex="70" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="3" Margin="10,10,150,190" Grid.RowSpan="2">
+                    <TextBlock x:Name="extrasCheckboxTextBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Optional Extras:" VerticalAlignment="Top" FontFamily="Cambria" FontSize="18" FontWeight="Bold"/>
+                    <CheckBox Content="Total Window Tinting $150" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" Name="windowTintingCheckBox" VerticalAlignment="Top" TabIndex="80" />
+                    <CheckBox Content="Duco Body Protection $180" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" Name="bodyProtectionCheckBox" VerticalAlignment="Top" TabIndex="90" />
+                    <CheckBox Content="GPS Navigational System $320" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" Name="gpsNavigationCheckBox" VerticalAlignment="Top" Width="230" TabIndex="100" />
+                    <CheckBox Content="Deluxe Sound System $350" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" Name="soundSystemCheckBox" VerticalAlignment="Top" TabIndex="110" />
+                </StackPanel>
+
+            </Grid>
+        </SplitView.Content>
+    </SplitView>
+</Page>
